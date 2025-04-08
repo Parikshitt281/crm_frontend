@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('pull'){
+            steps {
+                git branch: 'main', url: 'https://github.com/Parikshitt281/crm_frontend.git'
+            }
+        }
+        stage('build'){
+            steps {
+                sh '''
+                    npm install
+                    ng build
+                '''
+            }
+        }
+        stage('deploy'){
+            steps {
+                sh '''
+                    aws s3 cp --recursive dist/crm_frontend-frontend/ s3://cbz-frontend-frooti/
+                '''
+                
+            }
+        }
+    }
+}
