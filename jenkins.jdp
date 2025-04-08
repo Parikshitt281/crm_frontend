@@ -16,10 +16,10 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                sh '''
-                  #  sh ' aws s3 cp --recursive /var/lib/jenkins/workspace/Frontend/dist/*  s3://cbz-frontend-frooti/
+
+                   sh ' aws s3 cp --recursive /var/lib/jenkins/workspace/Frontend/dist/*  s3://cbz-frontend-frooti/'
     
-                '''
+                
             }
         }
     }
